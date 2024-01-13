@@ -5,6 +5,8 @@ var questionsDiv = document.querySelector("#questions")
 var questionTitle = document.querySelector("#question-title")
 var questionChoises = document.querySelector("#choices")
 
+var feedbackDiv = document.querySelector("#feedback")
+
 var timerEL = document.querySelector("#time")
 var timerDiv = document.querySelector(".timer")
 var timeLeft = 75
@@ -72,12 +74,19 @@ function onAnswerSelect(e){
     if(element.matches("button") === true){
         var index = parseInt(element.getAttribute("data-index"));
         var correctAnswerIndex = currentQuestion.answers.indexOf(currentQuestion.correctAnswer)
+        feedbackDiv.classList.remove("hide")
         if(index === correctAnswerIndex){
             score += scoreIncrement
+            feedbackDiv.textContent = "Correct!"
         } else {
             timeLeft -= timePenalty
+            feedbackDiv.textContent = "Incorrect!"
         }
 
+        setTimeout(() => {
+            feedbackDiv.classList.add("hide")
+        }, 1000)
+        
         renderQuestionAndAnswers(getRandomQuestion())
     }
 }
