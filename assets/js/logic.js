@@ -7,6 +7,9 @@ var questionChoises = document.querySelector("#choices")
 
 var feedbackDiv = document.querySelector("#feedback")
 
+var endScreenDiv = document.querySelector("#end-screen")
+var finalScoreSpan = document.querySelector("#final-score")
+
 var timerEL = document.querySelector("#time")
 var timerDiv = document.querySelector(".timer")
 var timeLeft = 75
@@ -25,6 +28,7 @@ function startQuiz(){
     score = 0
     startScreen.remove()
     questionsDiv.classList.remove("hide")
+    timerDiv.classList.remove("hide")
     startTimer()
     renderQuestionAndAnswers(getRandomQuestion())
 }
@@ -40,7 +44,13 @@ function startTimer(){
         timerEL.textContent = `${timeLeft} Seccond remaining`
     } else {
         clearInterval(timeInterval)
-        timerDiv.remove()
+        timerDiv.classList.add("hide")
+        endQuiz()
+    }
+
+    if(!endScreenDiv.classList.contains("hide")) { // this hides the timer on the end screen
+        timerDiv.classList.add("hide")
+        clearInterval(timeInterval)
     }
     timeLeft--
     }, 1000);
@@ -70,6 +80,10 @@ function renderQuestionAndAnswers(currentQuestion){
 }
 
 function onAnswerSelect(e){
+    if(questionsAlreadyAsked.length >= quizData.length){ //user has answered all questions
+        endQuiz()
+        return
+    }
     var element = e.target
     if(element.matches("button") === true){
         var index = parseInt(element.getAttribute("data-index"));
@@ -89,6 +103,12 @@ function onAnswerSelect(e){
         
         renderQuestionAndAnswers(getRandomQuestion())
     }
+}
+
+function endQuiz(){
+    questionsDiv.classList.add("hide")
+    endScreenDiv.classList.remove("hide")
+    finalScoreSpan.textContent = score
 }
 
 
