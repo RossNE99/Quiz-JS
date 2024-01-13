@@ -8,14 +8,19 @@ var questionChoises = document.querySelector("#choices")
 var timerEL = document.querySelector("#time")
 var timerDiv = document.querySelector(".timer")
 var timeLeft = 75
+var timePenalty = 15
 timerEL.textContent = `${timeLeft} Secconds remaining`
 
 var questionsAlreadyAsked = []
 var currentQuestion;
 
+var score = 0
+var scoreIncrement = 11;
+
 
 function startQuiz(){
     questionsAlreadyAsked = []
+    score = 0
     startScreen.remove()
     questionsDiv.classList.remove("hide")
     startTimer()
@@ -68,9 +73,9 @@ function onAnswerSelect(e){
         var index = parseInt(element.getAttribute("data-index"));
         var correctAnswerIndex = currentQuestion.answers.indexOf(currentQuestion.correctAnswer)
         if(index === correctAnswerIndex){
-            //handel correct answer
+            score += scoreIncrement
         } else {
-            //handel incorrect answer
+            timeLeft -= timePenalty
         }
 
         renderQuestionAndAnswers(getRandomQuestion())
