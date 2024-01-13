@@ -11,6 +11,7 @@ var timeLeft = 75
 timerEL.textContent = `${timeLeft} Secconds remaining`
 
 var questionsAlreadyAsked = []
+var currentQuestion;
 
 
 function startQuiz(){
@@ -45,16 +46,37 @@ function getRandomQuestion(){
     }
     questionsAlreadyAsked.push(randomIndex)
     var randQuestion = quizData[randomIndex]
+    currentQuestion = randQuestion //i tried to avoid having currentQuestion as a global variabale but i didnt know how to get this into the event handeler :(
     return randQuestion
 }
 
 function renderQuestionAndAnswers(currentQuestion){
+    questionChoises.innerHTML = "" //removes previus buttons
     questionTitle.textContent = currentQuestion.question
     currentQuestion.answers.forEach((answer, i) => {
         var answerBTN = document.createElement("button")
+        answerBTN.setAttribute("data-index", i)
         answerBTN.textContent = `${i+1}. ${answer}`
         questionChoises.appendChild(answerBTN)
     });
+
 }
 
+function onAnswerSelect(e){
+    var element = e.target
+    if(element.matches("button") === true){
+        var index = parseInt(element.getAttribute("data-index"));
+        var correctAnswerIndex = currentQuestion.answers.indexOf(currentQuestion.correctAnswer)
+        if(index === correctAnswerIndex){
+            //handel correct answer
+        } else {
+            //handel incorrect answer
+        }
+
+        renderQuestionAndAnswers(getRandomQuestion())
+    }
+}
+
+
 startButton.addEventListener("click",startQuiz)
+questionChoises.addEventListener("click", onAnswerSelect)
