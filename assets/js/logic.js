@@ -2,6 +2,8 @@ var startScreen = document.querySelector("#start-screen")
 var startButton = document.querySelector("#start")
 
 var questionsDiv = document.querySelector("#questions")
+var questionTitle = document.querySelector("#question-title")
+var questionChoises = document.querySelector("#choices")
 
 var timerEL = document.querySelector("#time")
 var timerDiv = document.querySelector(".timer")
@@ -16,7 +18,7 @@ function startQuiz(){
     startScreen.remove()
     questionsDiv.classList.remove("hide")
     startTimer()
-    getRandomQuestion()
+    renderQuestionAndAnswers(getRandomQuestion())
 }
 
 function startTimer(){
@@ -44,6 +46,15 @@ function getRandomQuestion(){
     questionsAlreadyAsked.push(randomIndex)
     var randQuestion = quizData[randomIndex]
     return randQuestion
+}
+
+function renderQuestionAndAnswers(currentQuestion){
+    questionTitle.textContent = currentQuestion.question
+    currentQuestion.answers.forEach((answer, i) => {
+        var answerBTN = document.createElement("button")
+        answerBTN.textContent = `${i+1}. ${answer}`
+        questionChoises.appendChild(answerBTN)
+    });
 }
 
 startButton.addEventListener("click",startQuiz)
