@@ -10,6 +10,9 @@ var feedbackDiv = document.querySelector("#feedback")
 var endScreenDiv = document.querySelector("#end-screen")
 var finalScoreSpan = document.querySelector("#final-score")
 
+var submitButton = document.querySelector("#submit")
+var initialsInput = document.querySelector("#initials")
+
 var timerEL = document.querySelector("#time")
 var timerDiv = document.querySelector(".timer")
 var timeLeft = 75
@@ -111,6 +114,19 @@ function endQuiz(){
     finalScoreSpan.textContent = score
 }
 
+function handelSubmitScore(){
+    console.log(initialsInput.value)
+    var submitData = {
+        initials: initialsInput.value,
+        score
+    }
+    var prevScores = JSON.parse(localStorage.getItem("scores"))
+    if(!prevScores) prevScores = [];
+    console.log(prevScores)
+    localStorage.setItem("scores", JSON.stringify([...prevScores, submitData]))
+}
+
 
 startButton.addEventListener("click",startQuiz)
 questionChoises.addEventListener("click", onAnswerSelect)
+submitButton.addEventListener("click", handelSubmitScore)
