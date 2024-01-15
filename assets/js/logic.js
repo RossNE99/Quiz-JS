@@ -95,21 +95,13 @@ function onAnswerSelect(e){
     if(element.matches("button") === true){
         var index = parseInt(element.getAttribute("data-index"));
         var correctAnswerIndex = currentQuestion.answers.indexOf(currentQuestion.correctAnswer)
-        feedbackDiv.classList.remove("hide")
         if(index === correctAnswerIndex){
             score += scoreIncrement
-            feedbackDiv.style.color = "green"
-            feedbackDiv.textContent = "Correct!"
+            renderFeedback("Correct!", "green", 1000)
         } else {
             timeLeft -= timePenalty
-            feedbackDiv.style.color = "red"
-            feedbackDiv.textContent = "Incorrect!"
+            renderFeedback("Incorrect!", "red", 1000)
         }
-
-        setTimeout(() => {
-            feedbackDiv.classList.add("hide")
-        }, 1000)
-        
         renderQuestionAndAnswers(getRandomQuestion())
     }
 }
@@ -123,12 +115,7 @@ function endQuiz(){
 
 function handelSubmitScore(){
     if(initialsInput.value.length < 2){
-        feedbackDiv.classList.remove("hide")
-        feedbackDiv.style.color = "red"
-        feedbackDiv.textContent = "You initials must be atleast 2 characters. Score NOT saved"  
-        setTimeout(() => {
-            feedbackDiv.classList.add("hide")
-        }, 3000)
+        renderFeedback("You initials must be atleast 2 characters. Score NOT saved", "red", 3000)
         return
     }
     var submitData = {
@@ -137,19 +124,20 @@ function handelSubmitScore(){
     }
     var prevScores = JSON.parse(localStorage.getItem("scores"))
     if(!prevScores) prevScores = [];
-    console.log(prevScores)
     localStorage.setItem("scores", JSON.stringify([...prevScores, submitData]))
-
-    feedbackDiv.classList.remove("hide")
-    feedbackDiv.textContent = "You score has been submitted"
-    feedbackDiv.style.color = "green"
-
-    setTimeout(() => {
-        feedbackDiv.classList.add("hide")
-    }, 3000)
+    renderFeedback("You score has been submitted", "green", 3000)
 
 }
 
+function renderFeedback(message, color, duration){
+    feedbackDiv.classList.remove("hide")
+    feedbackDiv.textContent = message
+    feedbackDiv.style.color = color
+
+    setTimeout(() => {
+        feedbackDiv.classList.add("hide")
+    }, duration)
+}
 
 startButton.addEventListener("click",startQuiz)
 questionChoises.addEventListener("click", onAnswerSelect)
