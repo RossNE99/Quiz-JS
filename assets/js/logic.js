@@ -35,6 +35,7 @@ function startQuiz(){
     startScreen.remove()
     questionsDiv.classList.remove("hide")
     timerDiv.classList.remove("hide")
+    timerDiv.style.color = "black"
     endScreenDiv.classList.add("hide")
     startTimer()
     renderQuestionAndAnswers(getRandomQuestion())
