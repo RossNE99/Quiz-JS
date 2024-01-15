@@ -13,6 +13,8 @@ var finalScoreSpan = document.querySelector("#final-score")
 var submitButton = document.querySelector("#submit")
 var initialsInput = document.querySelector("#initials")
 
+var playAgainButton = document.querySelector("#play-again")
+
 var timerEL = document.querySelector("#time")
 var timerDiv = document.querySelector(".timer")
 var timeLeft = 75
@@ -29,9 +31,11 @@ var scoreIncrement = 11;
 function startQuiz(){
     questionsAlreadyAsked = []
     score = 0
+    timeLeft = 75
     startScreen.remove()
     questionsDiv.classList.remove("hide")
     timerDiv.classList.remove("hide")
+    endScreenDiv.classList.add("hide")
     startTimer()
     renderQuestionAndAnswers(getRandomQuestion())
 }
@@ -112,6 +116,7 @@ function endQuiz(){
     questionsDiv.classList.add("hide")
     endScreenDiv.classList.remove("hide")
     finalScoreSpan.textContent = score
+    initialsInput.value = ""
 }
 
 function handelSubmitScore(){
@@ -130,3 +135,4 @@ function handelSubmitScore(){
 startButton.addEventListener("click",startQuiz)
 questionChoises.addEventListener("click", onAnswerSelect)
 submitButton.addEventListener("click", handelSubmitScore)
+playAgainButton.addEventListener("click", startQuiz)
