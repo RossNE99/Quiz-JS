@@ -98,10 +98,10 @@ function onAnswerSelect(e){
         var correctAnswerIndex = currentQuestion.answers.indexOf(currentQuestion.correctAnswer)
         if(index === correctAnswerIndex){
             score += scoreIncrement
-            renderFeedback("Correct!", "green", 1000)
+            renderFeedback("Correct!", "green", 1000, true)
         } else {
             timeLeft -= timePenalty
-            renderFeedback("Incorrect!", "red", 1000)
+            renderFeedback("Incorrect!", "red", 1000, true)
         }
         renderQuestionAndAnswers(getRandomQuestion())
     }
@@ -130,7 +130,17 @@ function handelSubmitScore(){
 
 }
 
-function renderFeedback(message, color, duration){
+function renderFeedback(message, color, duration, audio=false){
+    if(audio){
+        if(color === "green"){
+            var audio = new Audio('assets/sfx/correct.wav');
+            audio.play();
+        } else if(color === "red"){
+            var audio = new Audio('assets/sfx/incorrect.wav');
+            audio.play();
+        }
+    }
+
     feedbackDiv.classList.remove("hide")
     feedbackDiv.textContent = message
     feedbackDiv.style.color = color
