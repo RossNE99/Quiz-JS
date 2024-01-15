@@ -25,24 +25,22 @@ function renderHighscores(highScores){
 
 function clearHighScores(){
     if(getHighScores() < 1){
-        feedbackDiv.classList.remove("hide")
-        feedbackDiv.textContent = "There are currently no high scores"
-        feedbackDiv.style.color = "red"
-    
-        setTimeout(() => {
-            feedbackDiv.classList.add("hide")
-        }, 3000)
+        renderFeedback("There are currently no high scores", "red", 3000)
         return
     } 
     localStorage.setItem("scores", "[]")
     renderHighscores(getHighScores())
+    renderFeedback("All high scores have been reset", "green", 3000)
+}
+
+function renderFeedback(message, color, duration){
     feedbackDiv.classList.remove("hide")
-    feedbackDiv.textContent = "All high scores have been reset"
-    feedbackDiv.style.color = "green"
+    feedbackDiv.textContent = message
+    feedbackDiv.style.color = color
 
     setTimeout(() => {
         feedbackDiv.classList.add("hide")
-    }, 3000)
+    }, duration)
 }
 
 renderHighscores(getHighScores())
