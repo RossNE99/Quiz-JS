@@ -98,9 +98,11 @@ function onAnswerSelect(e){
         feedbackDiv.classList.remove("hide")
         if(index === correctAnswerIndex){
             score += scoreIncrement
+            feedbackDiv.style.color = "green"
             feedbackDiv.textContent = "Correct!"
         } else {
             timeLeft -= timePenalty
+            feedbackDiv.style.color = "red"
             feedbackDiv.textContent = "Incorrect!"
         }
 
@@ -120,7 +122,15 @@ function endQuiz(){
 }
 
 function handelSubmitScore(){
-    console.log(initialsInput.value)
+    if(initialsInput.value.length < 2){
+        feedbackDiv.classList.remove("hide")
+        feedbackDiv.style.color = "red"
+        feedbackDiv.textContent = "You initials must be atleast 2 characters. Score NOT saved"  
+        setTimeout(() => {
+            feedbackDiv.classList.add("hide")
+        }, 3000)
+        return
+    }
     var submitData = {
         initials: initialsInput.value,
         score
@@ -129,6 +139,15 @@ function handelSubmitScore(){
     if(!prevScores) prevScores = [];
     console.log(prevScores)
     localStorage.setItem("scores", JSON.stringify([...prevScores, submitData]))
+
+    feedbackDiv.classList.remove("hide")
+    feedbackDiv.textContent = "You score has been submitted"
+    feedbackDiv.style.color = "green"
+
+    setTimeout(() => {
+        feedbackDiv.classList.add("hide")
+    }, 3000)
+
 }
 
 
