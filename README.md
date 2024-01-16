@@ -1,88 +1,99 @@
-# Module 6 Challenge Web APIs: Code Quiz
+# Quiz-JS 🧩
+## A Quiz Game to Test Your JavaScript Knowledge
 
-## Your Task
+## Description
+Welcome to the JavaScript Fundamentals Challenge! This dynamic quiz features multiple-choice questions, injecting excitement as you race against the clock to accumulate correct answers. Exercise caution, as an incorrect response incurs a time penalty.
 
-As you proceed in your journey to becoming a front-end web developer, it’s likely that you’ll be asked to complete a coding assessment, perhaps as part of an interview process. A typical coding assessment is a combination of multiple-choice questions and interactive coding challenges. 
+The motivation behind creating this quiz is to enhance the enjoyment of learning and practicing JavaScript fundamentals. Notably, it stores your scores, allowing you to track your progress and witness your improvement over time. It serves as an ideal platform to hone your skills. Challenge your friends, compare high scores, and engage in friendly competition to determine who truly excels in their JS knowledge. Let the learning adventure begin!
 
-To help you become familiar with these tests and give you a chance to apply the skills from this module, this week’s challenge invites you to build a timed coding quiz with multiple-choice questions. This app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean, polished, and responsive user interface. This week’s coursework has taught you all the skills you need to succeed in this challenge.
-
-
-## User Story
-
-```
-AS A coding boot camp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
-```
-
-## Acceptance Criteria
-
-Create a code quiz that contains the following requirements:
-
-* A start button that when clicked a timer starts and the first question appears.
- 
-  * Questions contain buttons for each answer.
-  * 
-  * When answer is clicked, the next question appears
-  * 
-  * If the answer clicked was incorrect then subtract time from the clock
-
-* The quiz should end when all questions are answered or the timer reaches 0.
-
-  * When the game ends, it should display their score and give the user the ability to save their initials and their score
-  
-## Mock-Up
-
-The following animation demonstrates the application functionality:
-
-![Animation of code quiz. Presses button to start quiz. Clicks the button for the answer to each question, displays if answer was correct or incorrect. Quiz finishes and displays high scores. User adds their intials, then clears their intials and starts over.](./assets/08-web-apis-challenge-demo.gif)
-
-## Grading Requirements
-
-This challenge is graded based on the following criteria: 
-
-### Technical Acceptance Criteria: 40%
-
-* Satisfies all of the above acceptance criteria.
-
-### Deployment: 32%
-
-* Application deployed at live URL.
-
-* Application loads with no errors.
-
-* Application GitHub URL submitted.
-
-* GitHub repository that contains application code.
-
-### Application Quality: 15%
-
-* Application user experience is intuitive and easy to navigate.
-
-* Application user interface style is clean and polished.
-
-* Application resembles the mock-up functionality provided in the challenge instructions.
-
-### Repository Quality: 13%
-
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains quality README file with description, screenshot, and link to deployed application.
+Please see a full list of features [here](#Features)
 
 
-## Review
+## Table of Contents
 
-You are required to submit BOTH of the following for review:
+- [Dev Requirements](#Dev-Requirements)
+- [Dev Environment Setup](#Dev-Environment-Setup)
+- [Enduser usage instructions](#End-user-usage-instructions)
+- [Features](#Features)
+- [How to contribute](#How-to-contribute)
+- [technologies ](#technologies)
+- [Screenshot](#Screenshot)
+- [Credits](#credits)
+- [License](#license)
 
-* The URL of the functional, deployed application.
+## Dev Requirements
+Git/GitBash, VS Code, and the source code, of course! 🛠️
 
-* The URL of the GitHub repository. Give the repository a unique name and include a README describing the project.
+## Dev Environment Setup
+To get the development environment running:
+1. Clone this repo
+2. Open the repo folder in VS Code
+3. Right-click on `index.html` and open it using the default browser.
+
+- `index.html`: Contains all HTML code for the quiz page
+- `highscores.html`: Contains all HTML code for the highscores page
+- `assets/js/`: Contains all javaScript files for the webapp
+- `assets/css/`: Contains all CSS styling for the webapp
+- `assets/images/`: Contains all images used in the webpage
+
+## Enduser usage instructions
+There is no special requirements for end users. Simply visit [here](https://rossne99.github.io/Quiz-JS/) To play my Quiz
+
+## Features
+- **Contains of 50 unique questions**
+- **Questions are always in a random order, no matter how meany times you play!**
+- **Players can save there scores**
+- **Race against the timer, when you get a question incorrect you will lose time**
+- **Scores are saved so you can see how you are improving over time**
+
+
+## How to contribute
+1. Fork this repository
+2. Clone the repository
+3. Create a branch for your bug fix or feature
+4. Make necessary changes and commit those changes
+5. Push changes to GitHub
+6. Create a pull request to this repo to submit your changes for review
+
+## Technologies
+- **JavaScript**
+- **HTML**
+- **CSS**
+
+## Screenshot
+
+The following image shows the web application's appearance and functionality:
+
+![Screenshott](assets/images/Quiz-JS.png)
+
+> **Note**: This is a montage of my quiz.
+
+
+## Credits 
+- **Ross** - Source Code
 
 ---
-© 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+
+## Licence
+
+MIT License
+
+Copyright (c) 2023 RossNE99
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
